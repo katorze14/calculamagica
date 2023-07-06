@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mi Página Web</title>
+  <script src="script.js"></script>
+</head>
+<body>
+  <h1>Calculadora de promedios</h1>
+  
+  <form>
+    <label for="evidencias">Notas de evidencias escritas:</label>
+    <input type="number" id="evidencias" step="0.1" required>
+    
+    <label for="otras_evidencias">Notas de otras evidencias:</label>
+    <input type="number" id="otras_evidencias" step="0.1" required>
+    
+    <label for="actitudinal">Nota actitudinal:</label>
+    <input type="number" id="actitudinal" step="0.1" required>
+    
+    <button type="submit">Calcular</button>
+  </form>
+  
+  <div id="resultado"></div>
+<script> document.querySelector('form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    var evidencias = parseFloat(document.getElementById('evidencias').value);
+    var promedio_de_E_E = (evidencias * 30) / 100;
+    
+    var otras_evidencias = parseFloat(document.getElementById('otras_evidencias').value);
+    var promedio_de_O_E = (otras_evidencias * 35) / 100;
+    
+    var actitudinal = parseFloat(document.getElementById('actitudinal').value);
+    var promedio_de_A = (actitudinal * 15) / 100;
+    
+    var resultado = promedio_de_E_E + promedio_de_O_E + promedio_de_A;
+    
+    var cuantofalta = 30 - resultado;
+    var necesidad = (cuantofalta * 100) / 20;
+    
+    var resultadoElemento = document.getElementById("resultado");
+    resultadoElemento.innerHTML = "Su promedio es: " + resultado.toFixed(2) + "<br>" +
+                                   "Te falta: " + cuantofalta.toFixed(2) + "<br>" +
+                                   "Necesitas sacar: " + necesidad.toFixed(2) + " en la acumulativa";
+  });
+   </script>
+
+</body>
+</html>
